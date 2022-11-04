@@ -1,0 +1,48 @@
+Le langage C++ a ete creer par le danois
+
+std:: comcerne la bibliotheque standard la sortie de flux standard
+	elle possede des objet
+std::cout : permettant d'afficher (mise en memoire tampon) 
+std::cerr : sortie d'erreur standard (affichage direct)
+std::clog : journalisation (mise en memoire tampon)
+std::endl : retour à la ligne (\n) + flush
+std::flush
+
+
+****** les variables*****
+
+**Pour declarer une variable de type string, on importe d'abord la bibliotheque <string>
+	#include <string>
+	Exemple : std::string texte = "Bonjour tout le monde !!";
+
+** Si on utilise le mot cles <auto> à la place du type le compilateur va directement en deduire le type
+	Exemple : auto number{134}; <==> int number{134};
+		  auto number1{134.0}; <==> float number{134.0};
+
+***** La saisie clavier *****
+
+Pour se faire, on va utiliser des objets de la classe std
+Exemple :
+	int number;
+	std::<<cout "Entrer un nombre : ";
+	std::cin >> number;
+On a differente methode avec l'objet cin pour verifier la saisie :
+---> goodbit : std::cin.good() = 1 //indique la bonne saisie (boolean)
+---> failbit : std::cin.fail() = 0 //erreur ded saisie (
+---> badbit : std::cin.bad() = 0 //erreur de saisie (erreur irrecuperable)
+
+** la methode **getline** de std permet de lire une chaine de caractere avec des espaces
+Par defaut le delimiteur correspond à \n
+Exemple :  std::string username;
+	   std::getline(std::cin, username);
+	-On peut ajouter un delimiteur comme \n, ' ', ':'etc : std::getline(std::cin, username, ' ' ou '\n');
+	NB : Pour faire deux lecture successif, il faudra (vider la memoire) faire attention à la mise en memoire tampon.
+	* juste apres la lecture du premier, faire :
+		std::string username;
+		std::getline(std::cin, usrename);
+		std::count << "Donner votre nom : ";
+		std::getline(std::cin, usrename);
+
+Si cin est dans un etat d'erreur, il faudra le vider par : std::cin.clear(); 
+
+ 
